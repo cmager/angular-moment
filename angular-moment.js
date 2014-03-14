@@ -174,6 +174,15 @@
 				// else assume the given value is already a duration in a format (miliseconds, etc)
 				return $window.moment.duration(value, format).humanize(suffix);
 			};
+		}])
+		.filter('amFromNow', ['$window', function ($window) {
+		        return function(value) {
+				if (typeof value === 'undefined' || value === null) {
+					return '';
+				}
+
+				return $window.moment(new Date(value)).fromNow();
+			};
 		}]);
 
 })();
