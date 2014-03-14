@@ -353,6 +353,18 @@ describe('module angularMoment', function () {
 		});
 	});
 
+	describe('amFromNow filter', function () {
+
+		it('should return an empty string for invalid input', function () {
+			var strTime = new Date(new Date() - 5 * 60 * 1000).toString(); // 5 min ago
+			expect(amFromNow(strTime)).toBe('5 minutes ago');
+		});
+
+		it('should return an empty string for invalid input', function () {
+			expect(amFromNow('blah blah')).toBe('');
+		});
+	});
+
 	describe('amMoment service', function () {
 		describe('#changeLanguage', function () {
 			it('should return the current language', function () {
